@@ -1,3 +1,6 @@
+import { Dispatch, SetStateAction, useEffect } from "react";
+import { useQuery } from "@apollo/client";
+
 import {
   DialogRoot,
   DialogBackdrop,
@@ -6,16 +9,15 @@ import {
   DialogBody,
   DialogCloseTrigger,
 } from "@/components/ui/dialog";
-import { useQuery } from "@apollo/client";
+import { Image, Spinner } from "@chakra-ui/react";
+
 import { GET_CHARACTER_DETAILS } from "../../../queries/getCharacterDetails"; // Adjust the import as necessary
-import { Dispatch, SetStateAction, useEffect } from "react";
 import { CharacterEpisode } from "@/app/types";
-import { Image, Spinner, Text } from "@chakra-ui/react";
 
 interface CharacterModalProps {
   isOpen: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
-  characterId: string | null; // Accept character ID as prop
+  characterId?: string;
 }
 
 export const CharacterModal = ({
@@ -48,7 +50,7 @@ export const CharacterModal = ({
           {loading ? (
             <Spinner />
           ) : error ? (
-            <Text color="red.500">Error: {error.message}</Text>
+            <p className="text-red-500">Error: {error.message}</p>
           ) : (
             data && (
               <div className="flex flex-col gap-2">

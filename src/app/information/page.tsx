@@ -14,38 +14,36 @@ import { Profile } from "../components/Profile";
 
 const InformationPage = () => {
   const router = useRouter();
-  const [currentPage, setCurrentPage] = useState(1); // Initialize with a default page
-  const [selectedCharacterId, setSelectedCharacterId] = useState<string | null>(
-    null
-  );
-  const [isModalOpen, setModalOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [selectedCharacterId, setSelectedCharacterId] = useState<string | undefined>(
+    undefined
+  ); //Selected character ID, used when clicking on character in table
+  const [isModalOpen, setModalOpen] = useState(false); //Character modal
 
   const { loading, error, data } = useQuery(GET_CHARACTERS, {
     variables: { page: currentPage }, // Pass the current page as a variable
-  });
+  }); // Get character list
 
   useEffect(() => {
-    const query = new URLSearchParams(window.location.search);
+    const query = new URLSearchParams(window.location.search); //Get the current page based on the URL
     const page = parseInt(query.get("page") || "1", 10);
-    setCurrentPage(page);
+    setCurrentPage(page); //Set the current page
   }, []);
 
-  useEffect(() => {
-    if (!loading && data) {
-    }
-  }, [loading, data]);
-
+  //Pagination onChange
   const handlePageChange = (page: number) => {
     router.push(`/information?page=${page}`); // Update the URL with the new page
-    setCurrentPage(page);
+    setCurrentPage(page); //Set current page state
   };
 
+  //Handle character item click, open modal and set selected character ID
   const handleRowClick = (characterId: string) => {
     setSelectedCharacterId(characterId);
     setModalOpen(true);
   };
 
   // Load user info from local storage
+  //This is to check if the user info is valid, will re-direct the user if they attempt to access the /information URL without entering in username and job
   useEffect(() => {
     const storedInfo = localStorage.getItem("userInfo");
     if (!storedInfo) {
@@ -59,6 +57,7 @@ const InformationPage = () => {
 
   return (
     <>
+      {/* Profile, needs to be wrapped in a div to avoid NExt.js auto-scroll behaviour console warning  */}
       <div>
         <Profile />
       </div>

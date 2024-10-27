@@ -33,7 +33,6 @@ export const ProfileEdit = ({
 
   return (
     <DialogRoot open={isOpen}>
-      {/* <DialogBackdrop /> */}
       <DialogContent>
         <DialogHeader>
           <h4 className="text-lg">Enter Your information</h4>

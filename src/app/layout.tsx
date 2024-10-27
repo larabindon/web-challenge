@@ -1,10 +1,11 @@
 "use client";
-import { Provider } from "../components/ui/provider";
+import client from "../apollo-client";
+import { ApolloProvider } from "@apollo/client";
+
 import { Paytone_One } from "next/font/google";
 import { Comfortaa } from "next/font/google";
 
-import client from "../apollo-client";
-import { ApolloProvider } from "@apollo/client";
+import { Provider } from "../components/ui/provider";
 import "./styles/globals.css";
 
 const paytone_one = Paytone_One({

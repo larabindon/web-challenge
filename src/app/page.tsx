@@ -1,16 +1,17 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+
+import { UserInfo } from "./types";
 import { ProfileEdit } from "./components/ProfileEdit";
 
-import { useRouter } from "next/navigation";
-import { UserInfo } from "./types";
-
 function Home() {
-  const router = useRouter(); // Initialize the router
-  const [isDialogOpen, setDialogOpen] = useState(true); // Start with dialog open
-  const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
+  const router = useRouter(); 
+  const [isDialogOpen, setDialogOpen] = useState(true);
+  const [userInfo, setUserInfo] = useState<UserInfo | null>(null); 
 
   useEffect(() => {
+    //Get stored user info
     const storedInfo = localStorage.getItem("userInfo");
     if (storedInfo) {
       setUserInfo(JSON.parse(storedInfo));
@@ -21,14 +22,18 @@ function Home() {
 
   const handleSaveUserInfo = (username: string, jobTitle: string) => {
     const info = { username, jobTitle };
-    setDialogOpen(false);
     localStorage.setItem("userInfo", JSON.stringify(info));
+
+    //set dialog open false once user info has been assigned
+    setDialogOpen(false);
+
     // Redirect to the information page after saving user info
     router.push("/information");
   };
 
   return (
     <>
+      {/* Only display if isDialogOpen is open AND there is no user info  */}
       {isDialogOpen && userInfo === null && (
         <ProfileEdit
           isOpen={isDialogOpen}
