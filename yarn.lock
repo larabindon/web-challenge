@@ -7,13 +7,6 @@
   resolved "https://registry.yarnpkg.com/@alloc/quick-lru/-/quick-lru-5.2.0.tgz#7bf68b20c0a350f936915fcae06f58e32007ce30"
   integrity sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==
 
-"@apollo/client-react-streaming@0.11.5":
-  version "0.11.5"
-  resolved "https://registry.yarnpkg.com/@apollo/client-react-streaming/-/client-react-streaming-0.11.5.tgz#fb80f96b1abc31aa86f8e4b967560dce16b8d2ee"
-  integrity sha512-HK794oSbEdKa0e13E6rRTJY29da9FZnHAb/YZa7r+0/9EMbbEWe8Ll6BsBh1xN2RAR6BHJhZbo0c8yRMLnrGVQ==
-  dependencies:
-    ts-invariant "^0.10.3"
-
 "@apollo/client@^3.11.8":
   version "3.11.8"
   resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.11.8.tgz#f6bacdc7e1b243807c1387113e1d445a53471a9c"
@@ -33,13 +26,6 @@
     ts-invariant "^0.10.3"
     tslib "^2.3.0"
     zen-observable-ts "^1.2.5"
-
-"@apollo/experimental-nextjs-app-support@^0.11.5":
-  version "0.11.5"
-  resolved "https://registry.yarnpkg.com/@apollo/experimental-nextjs-app-support/-/experimental-nextjs-app-support-0.11.5.tgz#e988d48724fcff50c90eed98134067ca42eeb430"
-  integrity sha512-ifPDAQ/o+yko5UMhcH02yzR5WRkI0xocPMNMfKGjEDy7yNdrnd5o//m3B2oaiUMPOSOnqvlBO94CleeiFB5SoQ==
-  dependencies:
-    "@apollo/client-react-streaming" "0.11.5"
 
 "@ark-ui/anatomy@3.5.0":
   version "3.5.0"
