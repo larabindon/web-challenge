@@ -3,6 +3,7 @@ import { HStack } from "@chakra-ui/react";
 import {
   PaginationItems,
   PaginationNextTrigger,
+  PaginationPageText,
   PaginationPrevTrigger,
   PaginationRoot,
 } from "@/components/ui/pagination";
@@ -24,6 +25,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       pageSize={1}
       defaultPage={currentPage}
       onPageChange={(e) => onPageChange(e.page)}
+      siblingCount={1}
     >
       <HStack justify="center" mt={4}>
         <PaginationPrevTrigger
@@ -32,7 +34,12 @@ export const Pagination: React.FC<PaginationProps> = ({
             onPageChange(currentPage - 1);
           }}
         />
-        <PaginationItems />
+        <div className=" md:hidden">
+          <PaginationPageText />
+        </div>
+        <div className=" hidden gap-2 md:flex">
+          <PaginationItems />
+        </div>
         <PaginationNextTrigger onClick={() => onPageChange(currentPage + 1)} />
       </HStack>
     </PaginationRoot>
