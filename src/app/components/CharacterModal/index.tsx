@@ -18,7 +18,7 @@ interface CharacterModalProps {
   characterId: string | null; // Accept character ID as prop
 }
 
-const CharacterModal = ({
+export const CharacterModal = ({
   isOpen,
   setOpen,
   characterId,
@@ -82,5 +82,3 @@ const CharacterModal = ({
     </DialogRoot>
   );
 };
-
-export default CharacterModal;

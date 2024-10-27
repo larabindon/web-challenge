@@ -5,7 +5,7 @@ import { ProfileEdit } from "./components/ProfileEdit";
 import { useRouter } from "next/navigation";
 import { UserInfo } from "./types";
 
-export default function Home() {
+function Home() {
   const router = useRouter(); // Initialize the router
   const [isDialogOpen, setDialogOpen] = useState(true); // Start with dialog open
   const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
@@ -16,6 +16,7 @@ export default function Home() {
       setUserInfo(JSON.parse(storedInfo));
       router.push("/information");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSaveUserInfo = (username: string, jobTitle: string) => {
@@ -38,3 +39,5 @@ export default function Home() {
     </>
   );
 }
+
+export default Home;

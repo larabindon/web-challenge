@@ -1,16 +1,18 @@
 "use client";
-import { useQuery } from "@apollo/client";
-import { GET_CHARACTERS } from "../../queries/getCharacter";
-import { Spinner, Text } from "@chakra-ui/react";
-import { Character } from "../types";
-import { Avatar } from "@/components/ui/avatar";
-import { Pagination } from "../components/Pagination";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import CharacterModal from "../components/CharacterModal";
+import { useQuery } from "@apollo/client";
+import { Spinner } from "@chakra-ui/react";
+
+import { Avatar } from "@/components/ui/avatar";
+
+import { GET_CHARACTERS } from "../../queries/getCharacter";
+import { Character } from "../types";
+import { Pagination } from "../components/Pagination";
+import { CharacterModal } from "../components/CharacterModal";
 import { Profile } from "../components/Profile";
 
-export const InformationPage = () => {
+const InformationPage = () => {
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState(1); // Initialize with a default page
   const [selectedCharacterId, setSelectedCharacterId] = useState<string | null>(
@@ -35,7 +37,7 @@ export const InformationPage = () => {
 
   const handlePageChange = (page: number) => {
     router.push(`/information?page=${page}`); // Update the URL with the new page
-    setCurrentPage(page)
+    setCurrentPage(page);
   };
 
   const handleRowClick = (characterId: string) => {
@@ -53,19 +55,18 @@ export const InformationPage = () => {
   }, [router]);
 
   if (loading) return <Spinner />;
-  if (error) return <Text color="red.500">Error: {error.message}</Text>;
-
+  if (error) return <p className="text-red-500">Error: {error.message}</p>;
 
   return (
     <>
-    <div>
-      <Profile />
+      <div>
+        <Profile />
       </div>
-        <CharacterModal
-          isOpen={isModalOpen}
-          setOpen={setModalOpen}
-          characterId={selectedCharacterId}
-        />
+      <CharacterModal
+        isOpen={isModalOpen}
+        setOpen={setModalOpen}
+        characterId={selectedCharacterId}
+      />
 
       <div className="p-10">
         <div className="bg-white shadow-lg p-2">
